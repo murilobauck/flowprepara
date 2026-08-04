@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { type Question } from './components/GamePlay/GamePlay';
 import { supabase } from '@/lib/supabase';
