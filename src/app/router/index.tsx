@@ -25,4 +25,6 @@ export const router = createBrowserRouter([
     path: '/privacidade', // Rota para a Política de Privacidade
     element: <Privacy />,
   },
-]);
+], {
+  basename: import.meta.env.BASE_URL,
+});
