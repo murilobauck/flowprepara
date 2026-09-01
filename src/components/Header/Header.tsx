@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
+// Prefixo base da aplicacao (ex.: '/flowprepara/' no GitHub Pages, '/' em dev)
+// Necessario para que os assets de /public resolvam sob qualquer base
+const BASE = import.meta.env.BASE_URL;
+
 // Componente de Cabeçalho da aplicação
 export const Header = () => {
   // Estado para controlar se a página sofreu scroll (usado para aplicar estilos dinâmicos)
@@ -23,12 +27,12 @@ export const Header = () => {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       {/* Logotipo que contém um símbolo (logotipoImg) e texto (wordmarkImg) */}
       <Link to="/" className={styles.logo}>
-        <img src="/logotipo.svg" alt="Flow" className={styles.logotipoImg} />
-        <img src="/wordmark.svg" alt="Flow" className={styles.wordmarkImg} />
+        <img src={`${BASE}logotipo.svg`} alt="Flow" className={styles.logotipoImg} />
+        <img src={`${BASE}wordmark.svg`} alt="Flow" className={styles.wordmarkImg} />
       </Link>
       {/* Botão de Call To Action que rola suavemente para a seção de waitlist */}
       <Link to="/#waitlist" className={styles.cta} onClick={(e) => {
-        if (window.location.pathname === '/') {
+        if (window.location.pathname === BASE) {
           e.preventDefault();
           document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
         }
